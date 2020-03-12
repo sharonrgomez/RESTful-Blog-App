@@ -12,8 +12,9 @@ app.use(bodyParser.json());
 // create mongoose schema
 const blogSchema = new mongoose.Schema({
   title: String,
-  image: String,
   body: String,
+  image: String,
+  isDraft: {type: Boolean, default: false},
   dateCreated: {type: Date, default: Date.now}
 });
 
@@ -27,11 +28,11 @@ const Blog = mongoose.model("Blog", blogSchema);
 //   body: "I came across another image of some corgis today. Could this be a sign?"
 // });
 
-// RESTFUL ROUTES
 app.get("/", function(req, res) {
   res.redirect("/blogs");
 });
 
+// index route
 app.get("/blogs", function(req, res) {
   // retrieve all blogs from db
   Blog.find({}, function(err, blogs) {
@@ -39,12 +40,29 @@ app.get("/blogs", function(req, res) {
       console.log(err);
     } else {
       // grabbing data, whatever comes back from db will be in the variable "blogs"
-      res.render("index", {blogs: blogs});
+      res.render("index", {blogs: blogs.filter(blogFilter => !blogFilter.isDraft)});
+    }
+  });
+});
+
+// new route
+app.get("/blogs/new", function(req, res) {
+  res.render("new");
+});
+
+// create route
+app.post("/blogs", function(req, res) {
+  Blog.create(req.body.blog, function(err, newBlog) {
+    if(err) {
+      res.render("new");
+    } else {
+      res.redirect("/blogs");
     }
   });
 });
 
 
+// hosting local server
 app.listen(8000, "localhost", function() {
   console.log("RESTfulBlogApp is running...");
 });

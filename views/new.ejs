@@ -1,0 +1,39 @@
+<%- include("partials/header") %>
+<div class="ui main text container clearing segment">
+  <div class="ui large header">Create New Post</div>
+
+  <!-- title -->
+  <div class="ui form container">
+    <form action="/blogs" method="POST">
+      <div class="field">
+        <label>Title</label>
+        <input type="text" name="blog[title]" placeholder="Title" required></input>
+      </div>
+
+      <!-- body text -->
+      <div class="field">
+        <label>Body</label>
+        <textarea name="blog[body]" placeholder="Body text goes here" required></textarea>
+      </div>
+
+      <div class="field">
+        <label>Image (not required)</label>
+        <input type="text" name="blog[image]" placeholder="Image URL"></input>
+      </div>
+
+      <!-- buttons  -->
+
+      <!-- <div class="ui icon buttons">
+      <button class="ui button"><i class="bold icon"></i></button>
+      <button class="ui button"><i class="underline icon"></i></button>
+      <button class="ui button"><i class="italic icon"></i></button>
+    </div> -->
+
+    <button input="submit" class="ui primary right floated big submit button">Save</button>
+    <button input="submit" name="blog[isDraft]" value="true" class="ui right floated grey button">Draft</button>
+  </form>
+  <button onclick="location.href='/blogs'" class="ui right floated button">Discard</button>
+</div>
+</div>
+
+<%- include("partials/footer") %>
