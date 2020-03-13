@@ -2,10 +2,32 @@ i.icon {
   font-size: 1.5em; /* increase size of icon */
 }
 
-.container.main {
+.blogPostContainer>div.ui.segment:first-child {
   margin-top: 5.0em;
 }
 
-.blogPost {
-  margin-top: 5.0em;
+.blogPostContainer {
+  margin: 5em auto 0;
+  width: 40%;
+
+}
+
+.blogPostContainer p {
+  /* margin: 0 0 0em; */
+}
+
+#showPost, #newPost {
+  width: 50%;
+  margin: 5em auto 0;
+}
+
+#title {
+  margin: 0;
+  display: inline-block;
+}
+
+.titleDate {
+  display: flex;
+  justify-content: space-between;
+  line-height: .1;
 }

@@ -1,10 +1,10 @@
 <%- include("partials/header") %>
-<div class="ui main text container clearing segment">
+<div id="newPost" class="ui main text container clearing raised segment">
   <div class="ui large header">Create New Post</div>
 
   <!-- title -->
   <div class="ui form container">
-    <form action="/blogs" method="POST">
+    <form action="/blogs" method="POST" autocomplete="off">
       <div class="field">
         <label>Title</label>
         <input type="text" name="blog[title]" placeholder="Title" required></input>
@@ -21,19 +21,11 @@
         <input type="text" name="blog[image]" placeholder="Image URL"></input>
       </div>
 
-      <!-- buttons  -->
-
-      <!-- <div class="ui icon buttons">
-      <button class="ui button"><i class="bold icon"></i></button>
-      <button class="ui button"><i class="underline icon"></i></button>
-      <button class="ui button"><i class="italic icon"></i></button>
-    </div> -->
-
-    <button input="submit" class="ui primary right floated big submit button">Save</button>
-    <button input="submit" name="blog[isDraft]" value="true" class="ui right floated grey button">Draft</button>
-  </form>
-  <button onclick="location.href='/blogs'" class="ui right floated button">Discard</button>
-</div>
+      <button input="submit" class="ui primary right floated small submit button">Save</button>
+      <button input="submit" name="blog[isDraft]" value="true" class="ui right floated grey small button">Draft</button>
+    </form>
+    <button onclick="location.href='/blogs'" class="ui right floated small button">Discard</button>
+  </div>
 </div>
 
 <%- include("partials/footer") %>

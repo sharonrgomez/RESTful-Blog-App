@@ -14,9 +14,16 @@ const blogSchema = new mongoose.Schema({
   title: String,
   body: String,
   image: String,
-  isDraft: {type: Boolean, default: false},
-  dateCreated: {type: Date, default: Date.now}
+  isDraft: {
+    type: Boolean,
+    default: false
+  },
+  dateCreated: {
+    type: Date,
+    default: Date.now
+  }
 });
+
 
 // compile schema into model
 const Blog = mongoose.model("Blog", blogSchema);
@@ -39,7 +46,7 @@ app.get("/blogs", function(req, res) {
     if(err) {
       console.log(err);
     } else {
-      // grabbing data, whatever comes back from db will be in the variable "blogs"
+      // grabbing data, whatever comes back from db will be in the variable "blogs" unless it is a draft
       res.render("index", {blogs: blogs.filter(blogFilter => !blogFilter.isDraft)});
     }
   });
@@ -57,6 +64,17 @@ app.post("/blogs", function(req, res) {
       res.render("new");
     } else {
       res.redirect("/blogs");
+    }
+  });
+});
+
+// show route
+app.get("/blogs/:id", function(req, res) {
+  Blog.findById(req.params.id, function (err, foundBlog) {
+    if(err) {
+      res.redirect("/blogs");
+    } else {
+      res.render("show", {blog: foundBlog});
     }
   });
 });

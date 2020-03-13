@@ -1,0 +1,11 @@
+<%- include("partials/header") %>
+
+<div id="showPost" class="ui main container clearing raised segment">
+  <div class="titleDate">
+    <div class="ui large header"><%= blog.title %></div>
+    <%= blog.dateCreated.toDateString().slice(3) %>
+  </div>
+  <img src="<%= blog.image %>" width="100%" />
+  <p><%= blog.body %></p>
+</div>
+<%- include("partials/footer") %>
