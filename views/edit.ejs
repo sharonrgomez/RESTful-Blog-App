@@ -1,29 +1,30 @@
 <%- include("partials/header") %>
 <div id="new-post" class="ui main text container clearing raised segment">
-  <div class="ui large header">Create New Post</div>
+  <div class="ui large header">Edit Post</div>
 
   <!-- title -->
   <div class="ui form container">
-    <form action="/blogs" method="POST" autocomplete="off">
+    <!-- need to override the method POST using method-override package bc html doesn't allow for PUT methods -->
+    <form action="/blogs/<%= blog._id %>?_method=PUT" method="POST" autocomplete="off">
       <div class="field">
         <label>Title</label>
-        <input type="text" name="blog[title]" placeholder="Title" required></input>
+        <input type="text" name="blog[title]" value="<%= blog.title %>" required></input>
       </div>
 
       <!-- body text -->
       <div class="field">
         <label>Body</label>
-        <textarea name="blog[body]" placeholder="Body text goes here" required></textarea>
+        <textarea name="blog[body]" required><%= blog.body %></textarea>
       </div>
 
       <!-- image (if desired) -->
       <div class="field">
         <label>Image (not required)</label>
-        <input type="text" name="blog[image]" placeholder="Image URL"></input>
+        <input type="text" name="blog[image]" value="<%= blog.image %>"></input>
       </div>
 
       <button input="submit" class="ui teal right floated small submit button">Save</button>
-      <button input="submit" name="blog[is_draft]" value="true" class="ui right floated grey small button">Draft</button>
+      <!-- <button input="submit" name="blog[is_draft]" value="true" class="ui right floated grey small button">Draft</button> -->
     </form>
     <button onclick="location.href='/blogs'" class="ui right floated small button">Discard</button>
   </div>

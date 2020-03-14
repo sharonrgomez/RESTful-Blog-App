@@ -5,7 +5,7 @@
     <div class="ui large header">
       <%= blog.title %>
     </div>
-    <%= blog.dateCreated.toDateString().slice(3) %>
+    <%= blog.date_created.toDateString().slice(3) %>
   </div>
   <img src="<%= blog.image %>" width="100%" />
   <p><%= blog.body %></p>

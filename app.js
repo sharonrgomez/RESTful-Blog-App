@@ -1,24 +1,27 @@
+const method_override = require("method-override");
 const bodyParser =  require("body-parser");
 const mongoose =    require("mongoose");
 const express =     require("express");
 const app =         express();
 
 mongoose.connect("mongodb://localhost:27017/RESTfulBlogApp", {useNewUrlParser: true, useUnifiedTopology: true});
-app.set("view engine", "ejs");
-app.use(express.static("public")); // allows to use custom css
+mongoose.set('useFindAndModify', false);
+app.use(method_override("_method"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.set("view engine", "ejs");
+app.use(express.static("public")); // allows to use custom css
 
 // create mongoose schema
 const blogSchema = new mongoose.Schema({
   title: String,
   body: String,
   image: String,
-  isDraft: {
+  is_draft: {
     type: Boolean,
     default: false
   },
-  dateCreated: {
+  date_created: {
     type: Date,
     default: Date.now
   }
@@ -47,7 +50,7 @@ app.get("/blogs", function(req, res) {
       console.log(err);
     } else {
       // grabbing data, whatever comes back from db will be in the variable "blogs" unless it is a draft
-      res.render("index", {blogs: blogs.filter(blogFilter => !blogFilter.isDraft)});
+      res.render("index", {blogs: blogs.filter(blogFilter => !blogFilter.is_draft)});
     }
   });
 });
@@ -79,6 +82,28 @@ app.get("/blogs/:id", function(req, res) {
   });
 });
 
+// edit route
+app.get("/blogs/:id/edit", function(req, res) {
+  Blog.findById(req.params.id, function (err, foundBlog) {
+    if(err) {
+      res.redirect("/blogs");
+    } else {
+      res.render("edit", {blog: foundBlog});
+    }
+  });
+});
+
+// update route
+app.put("/blogs/:id", function(req, res) {
+  // id, new data, callback
+  Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog) {
+    if(err) {
+      res.redirect("/blogs");
+    } else {
+      res.redirect("/blogs/" + req.params.id);
+    }
+  });
+});
 
 // hosting local server
 app.listen(8000, "localhost", function() {
