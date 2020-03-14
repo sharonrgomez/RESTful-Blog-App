@@ -1,17 +1,19 @@
 <%- include("partials/header") %>
-<div class="blogPostContainer">
+<div class="blog-post-container">
   <% blogs.forEach(function(blog) { %>
-    <% const date = (blog.dateCreated.toDateString()).slice(3) %>
-    <div class="blogPost ui raised segment container">
-      <div class="titleDate">
-        <h2 id="title"><%= blog.title %></h2>
-        <span><%= date %><span>
+    <div class="ui raised segment container">
+      <div class="title">
+        <div class="ui large header">
+          <%= blog.title %>
+        </div>
+        <span><%= blog.dateCreated.toDateString() %><span>
       </div>
       <img src="<%= blog.image %>" width="100%" text-align="right" />
-
-      <p><%= blog.body %></p>
-      <a href="/blogs/<%= blog._id %>" class="ui mini olive button">Read more</a>
+      <p><%= blog.body.substring(0, 100) %>...</p>
+      <div id="read-more">
+        <a href="/blogs/<%= blog._id %>" class="ui mini olive button">Read more</a>
+      </div>
     </div>
   <% }); %>
 </div>
-    <%- include("partials/footer") %>
+<%- include("partials/footer") %>

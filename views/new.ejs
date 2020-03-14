@@ -1,5 +1,5 @@
 <%- include("partials/header") %>
-<div id="newPost" class="ui main text container clearing raised segment">
+<div id="new-post" class="ui main text container clearing raised segment">
   <div class="ui large header">Create New Post</div>
 
   <!-- title -->
@@ -16,12 +16,13 @@
         <textarea name="blog[body]" placeholder="Body text goes here" required></textarea>
       </div>
 
+      <!-- image (if desired) -->
       <div class="field">
         <label>Image (not required)</label>
         <input type="text" name="blog[image]" placeholder="Image URL"></input>
       </div>
 
-      <button input="submit" class="ui primary right floated small submit button">Save</button>
+      <button input="submit" class="ui teal right floated small submit button">Save</button>
       <button input="submit" name="blog[isDraft]" value="true" class="ui right floated grey small button">Draft</button>
     </form>
     <button onclick="location.href='/blogs'" class="ui right floated small button">Discard</button>

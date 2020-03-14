@@ -1,33 +1,35 @@
+/* increase size of icon */
 i.icon {
-  font-size: 1.5em; /* increase size of icon */
+  font-size: 1.5em;
 }
 
-.blogPostContainer>div.ui.segment:first-child {
+.blog-post-container>div.ui.segment:first-child {
   margin-top: 5.0em;
 }
 
-.blogPostContainer {
+.blog-post-container {
   margin: 5em auto 0;
   width: 40%;
-
 }
 
-.blogPostContainer p {
-  /* margin: 0 0 0em; */
+.blog-post-container img {
+  display: block;
 }
 
-#showPost, #newPost {
+#show-post, #new-post {
   width: 50%;
   margin: 5em auto 0;
 }
 
-#title {
+/* keep date at the top right of each post */
+.title {
   margin: 0;
-  display: inline-block;
-}
-
-.titleDate {
   display: flex;
   justify-content: space-between;
   line-height: .1;
+}
+
+#read-more {
+  display: flex;
+  justify-content: flex-end;
 }
