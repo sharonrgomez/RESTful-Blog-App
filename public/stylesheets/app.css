@@ -16,6 +16,10 @@ i.icon {
   display: block;
 }
 
+.ui.raised.segment.container p {
+  margin: 1em 0 .5em;
+}
+
 #show-post, #new-post {
   width: 50%;
   margin: 5em auto 0;

@@ -9,5 +9,12 @@
   </div>
   <img src="<%= blog.image %>" width="100%" />
   <p><%= blog.body %></p>
+  <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+    <button class="ui right floated mini red button">
+      Delete
+      <!-- GIVE USER SECOND CHANCE -->
+    </button>
+  </form>
+  <a href="/blogs/<%= blog._id %>/edit" class="ui right floated mini yellow button">Edit</a>
 </div>
 <%- include("partials/footer") %>

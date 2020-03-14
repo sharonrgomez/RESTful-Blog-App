@@ -105,6 +105,17 @@ app.put("/blogs/:id", function(req, res) {
   });
 });
 
+// destroy route
+app.delete("/blogs/:id", function(req, res) {
+  Blog.findByIdAndDelete(req.params.id, function(err, foundBlog) {
+    if(err) {
+      res.send("Something went wrong.");
+    } else {
+      res.redirect("/blogs");
+    }
+  });
+});
+
 // hosting local server
 app.listen(8000, "localhost", function() {
   console.log("RESTfulBlogApp is running...");
