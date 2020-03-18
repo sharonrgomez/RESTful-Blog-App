@@ -55,6 +55,17 @@ app.get("/blogs", function(req, res) {
   });
 });
 
+// display drafts
+app.get("/blogs/drafts", function(req, res) {
+  Blog.find({}, function(err, blogs) {
+    if(err) {
+      console.log(err);
+    } else {
+      res.render("index", {blogs: blogs.filter(blogFilter => blogFilter.is_draft)});
+    }
+  });
+});
+
 // new route
 app.get("/blogs/new", function(req, res) {
   res.render("new");

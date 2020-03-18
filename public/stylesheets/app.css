@@ -18,6 +18,7 @@ i.icon {
 
 .ui.raised.segment.container p {
   margin: 1em 0 .5em;
+  word-wrap: break-word;
 }
 
 #show-post, #new-post {
