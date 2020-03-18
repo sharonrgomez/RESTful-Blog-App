@@ -9,6 +9,11 @@
   </div>
   <img src="<%= blog.image %>" width="100%" />
   <p><%= blog.body %></p>
+  <% if(blog.is_draft) { %>
+    <form action="/blogs/<%= blog._id %>?_method=PUT" method="POST" autocomplete="off">
+      <button input="submit" name="blog[is_draft]" value="false" class="ui primary right floated mini submit button">Make public</button>
+    </form>
+  <% } %>
   <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
     <button onclick="return confirm('The post \'<%= blog.title %>\' is going to be deleted. Is that okay?')" class="ui right floated mini red button">Delete</button>
   </form>

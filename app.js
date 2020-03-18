@@ -1,5 +1,6 @@
+const express_sanitizer = require("express-sanitizer");
 const method_override = require("method-override");
-const bodyParser =  require("body-parser");
+const body_parser =  require("body-parser");
 const mongoose =    require("mongoose");
 const express =     require("express");
 const app =         express();
@@ -7,8 +8,8 @@ const app =         express();
 mongoose.connect("mongodb://localhost:27017/RESTfulBlogApp", {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.set('useFindAndModify', false);
 app.use(method_override("_method"));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(body_parser.urlencoded({ extended: true }));
+app.use(body_parser.json());
 app.set("view engine", "ejs");
 app.use(express.static("public")); // allows to use custom css
 
@@ -118,7 +119,7 @@ app.put("/blogs/:id", function(req, res) {
 
 // destroy route
 app.delete("/blogs/:id", function(req, res) {
-  Blog.findByIdAndDelete(req.params.id, function(err, foundBlog) {
+  Blog.findByIdAndDelete(req.params.id, function(err) {
     if(err) {
       res.send("Something went wrong.");
     } else {
