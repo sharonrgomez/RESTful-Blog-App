@@ -9,9 +9,10 @@ mongoose.connect("mongodb://localhost:27017/RESTfulBlogApp", {useNewUrlParser: t
 mongoose.set('useFindAndModify', false);
 app.use(method_override("_method"));
 app.use(body_parser.urlencoded({ extended: true }));
-app.use(body_parser.json());
-app.set("view engine", "ejs");
+app.use(express_sanitizer());
+app.use(express.json());
 app.use(express.static("public")); // allows to use custom css
+app.set("view engine", "ejs");
 
 // create mongoose schema
 const blogSchema = new mongoose.Schema({
@@ -31,13 +32,6 @@ const blogSchema = new mongoose.Schema({
 
 // compile schema into model
 const Blog = mongoose.model("Blog", blogSchema);
-
-// test
-// Blog.create({
-//   title: "Another Cute bb",
-//   image: "https://i.pinimg.com/736x/2a/e9/a4/2ae9a40b4363e74554dcae603cd8356d.jpg",
-//   body: "I came across another image of some corgis today. Could this be a sign?"
-// });
 
 app.get("/", function(req, res) {
   res.redirect("/blogs");
@@ -62,6 +56,7 @@ app.get("/blogs/drafts", function(req, res) {
     if(err) {
       console.log(err);
     } else {
+      // displays all blogs that are drafts
       res.render("index", {blogs: blogs.filter(blogFilter => blogFilter.is_draft)});
     }
   });
@@ -74,6 +69,7 @@ app.get("/blogs/new", function(req, res) {
 
 // create route
 app.post("/blogs", function(req, res) {
+  req.body.blog.body = req.sanitize(req.body.blog.body);
   Blog.create(req.body.blog, function(err, newBlog) {
     if(err) {
       res.render("new");

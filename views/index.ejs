@@ -6,7 +6,7 @@
         <div class="ui large header">
           <%= blog.title %>
         </div>
-        <span><%= blog.date_created.toDateString(3) %><span>
+        <span><%= blog.date_created.toDateString().slice(3) %><span>
       </div>
       <img src="<%= blog.image %>" width="100%" text-align="right" />
       <p><%= blog.body.substring(0, 100) %>...</p>

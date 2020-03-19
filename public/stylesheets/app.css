@@ -3,8 +3,13 @@ i.icon {
   font-size: 1.5em;
 }
 
+
 .blog-post-container>div.ui.segment:first-child {
   margin-top: 5.0em;
+}
+
+.blog-post-container:last-child {
+    margin-bottom: 1em;
 }
 
 .blog-post-container {
