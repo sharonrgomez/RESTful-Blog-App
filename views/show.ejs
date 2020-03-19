@@ -8,7 +8,7 @@
     <%= blog.date_created.toDateString().slice(3) %>
   </div>
   <img src="<%= blog.image %>" width="100%" />
-  <p><%= blog.body %></p>
+  <p><%- blog.body %></p>
   <% if(blog.is_draft) { %>
     <form action="/blogs/<%= blog._id %>?_method=PUT" method="POST" autocomplete="off">
       <button input="submit" name="blog[is_draft]" value="false" class="ui primary right floated mini submit button">Make public</button>
