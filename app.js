@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express_sanitizer = require("express-sanitizer");
 const method_override = require("method-override");
 const body_parser =  require("body-parser");
@@ -5,7 +6,8 @@ const mongoose =    require("mongoose");
 const express =     require("express");
 const app =         express();
 
-mongoose.connect("mongodb://localhost:27017/RESTfulBlogApp", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/myrestfulblog', {useNewUrlParser: true, useUnifiedTopology: true});
+// mongoose.connect("mongodb://localhost:27017/RESTfulBlogApp", {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.set('useFindAndModify', false);
 app.use(method_override("_method"));
 app.use(body_parser.urlencoded({ extended: true }));
@@ -125,7 +127,10 @@ app.delete("/blogs/:id", function(req, res) {
   });
 });
 
-// hosting local server
-app.listen(8000, "localhost", function() {
+// hosting heroku server
+
+const port = process.env.PORT || 3000;
+
+app.listen(port, function() {
   console.log("RESTfulBlogApp is running...");
 });
