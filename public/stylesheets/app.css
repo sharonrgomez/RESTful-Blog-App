@@ -1,6 +1,10 @@
 /* increase size of icon */
-i.icon {
+i.leaf.icon {
   font-size: 1.5em;
+}
+
+i.code.icon {
+  font-size: 1em;
 }
 
 
