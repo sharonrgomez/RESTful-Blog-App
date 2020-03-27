@@ -14,7 +14,7 @@ i.icon {
 
 .blog-post-container {
   margin: 5em auto 0;
-  width: 40%;
+  width: 95%;
 }
 
 .blog-post-container img {
@@ -42,4 +42,20 @@ i.icon {
 #read-more {
   display: flex;
   justify-content: flex-end;
+}
+
+@media (min-width: 768px) {
+  .title {
+    line-height: 0;
+  }
+
+  .blog-post-container {
+    width: 55%;
+  }
+}
+
+@media (max-width: 350px) {
+    #header {
+      display: none;
+    }
 }
