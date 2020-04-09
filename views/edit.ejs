@@ -8,7 +8,7 @@
     <form action="/blogs/<%= blog._id %>?_method=PUT" method="POST" autocomplete="off">
       <div class="field">
         <label>Title</label>
-        <input type="text" name="blog[title]" value="<%= blog.title %>" required></input>
+        <input type="text" name="blog[title]" value="<%= blog.title %>" required>
       </div>
 
       <!-- body text -->
@@ -20,10 +20,10 @@
       <!-- image (if desired) -->
       <div class="field">
         <label>Image (not required)</label>
-        <input type="text" name="blog[image]" value="<%= blog.image %>"></input>
+        <input type="text" name="blog[image]" value="<%= blog.image %>">
       </div>
 
-      <button input="submit" class="ui teal right floated small submit button">Save</button>
+      <button input="submit" class="ui right floated teal small submit button">Save</button>
       <button input="submit" name="blog[is_draft]" value="true" class="ui right floated grey small button">Draft</button>
     </form>
     <button onclick="location.href='/blogs'" class="ui right floated small button">Discard</button>

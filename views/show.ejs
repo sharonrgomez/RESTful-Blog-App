@@ -11,6 +11,9 @@
   <p><%- blog.body %></p>
   <% if(blog.is_draft) { %>
     <form action="/blogs/<%= blog._id %>?_method=PUT" method="POST" autocomplete="off">
+      <input type="hidden" name="blog[title]" value="<%= blog.title %>">
+      <input type="hidden" name="blog[body]" value="<%= blog.body %>">
+      <input type="hidden" name="blog[image]" value="<%= blog.image %>">
       <button input="submit" name="blog[is_draft]" value="false" class="ui primary right floated mini submit button">Make public</button>
     </form>
   <% } %>

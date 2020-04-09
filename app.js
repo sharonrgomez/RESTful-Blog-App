@@ -6,7 +6,7 @@ const mongoose =          require("mongoose");
 const express =           require("express");
 const app = express();
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/myrestfulblog',{useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/restfulblog', {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.set('useFindAndModify', false);
 app.use(method_override("_method"));
 app.use(body_parser.urlencoded({ extended: true }));
@@ -20,10 +20,7 @@ const blogSchema = new mongoose.Schema({
   title: String,
   body: String,
   image: String,
-  is_draft: {
-    type: Boolean,
-    default: false
-  },
+  is_draft: Boolean,
   date_created: {
     type: Date,
     default: Date.now
