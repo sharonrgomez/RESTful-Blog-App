@@ -1,6 +1,6 @@
 # RESTful-Blog-App
 
-A web app where people can create/edit/draft/delete blog posts
+A blog web app
 
 > A Node.js web application project based on one of the projects from this Udemy course - [The Web Developer Bootcamp by Colt Steele](https://www.udemy.com/the-web-developer-bootcamp/)
 
@@ -10,7 +10,7 @@ A web app where people can create/edit/draft/delete blog posts
 
 ## Features
 
-* Edit game posts:
+* Manage blog posts:
 
   * Create, edit and delete posts and comments (if authorized)
 
@@ -18,7 +18,7 @@ A web app where people can create/edit/draft/delete blog posts
 
 * Utilizes RESTful Routing 
 
-## This app was made with
+## This app was built with
 
 ### Front-end
 
