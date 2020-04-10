@@ -3,7 +3,7 @@ i.leaf.icon {
   font-size: 1.5em;
 }
 
-i.code.icon {
+i.icon {
   font-size: 1em;
 }
 
@@ -13,7 +13,7 @@ i.code.icon {
 }
 
 .blog-post-container:last-child {
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 .blog-post-container {
@@ -40,7 +40,11 @@ i.code.icon {
   margin: 0;
   display: flex;
   justify-content: space-between;
-  line-height: .1;
+  word-break: break-all;
+}
+
+div.title span {
+  white-space: nowrap;
 }
 
 #read-more {
@@ -54,12 +58,24 @@ i.code.icon {
   }
 
   .blog-post-container {
-    width: 55%;
+    width: 45%;
   }
 }
 
-@media (max-width: 350px) {
-    #header {
-      display: none;
-    }
+#header, #home, #drafts, #new {
+  display:flex;
+}
+
+#home_icon, #draft_icon, #new_icon {
+  display: none;
+}
+
+@media (max-width: 425px) {
+  #home_icon, #draft_icon, #new_icon {
+    display: flex;
+  }
+
+  #header, #home, #drafts, #new {
+    display: none;
+  }
 }
