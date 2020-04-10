@@ -12,8 +12,8 @@ A blog web app
 
 * Manage blog posts:
 
-  * Create, edit and delete posts and comments (if authorized)
-
+  * Create, edit and delete blog posts
+  
 * Responsive web design
 
 * Utilizes RESTful Routing 
