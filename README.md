@@ -1,8 +1,6 @@
 # RESTful-Blog-App
 
-A blog web app
-
-> A Node.js web application project based on one of the projects from this Udemy course - [The Web Developer Bootcamp by Colt Steele](https://www.udemy.com/the-web-developer-bootcamp/)
+A Node.js web app for blogging
 
 ## Live Demo
 
