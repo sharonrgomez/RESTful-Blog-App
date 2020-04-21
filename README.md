@@ -14,7 +14,15 @@ A Node.js web app for blogging
   
 * Responsive web design
 
-* Utilizes RESTful Routing 
+* Utilizes RESTful Routing
+
+  * (INDEX) Home page (display all posts)
+  * (SHOW) Show more info about a specific post
+  * (NEW) Display a form for creating a new post
+  * (CREATE) Submit new form and saves the post to the DB
+  * (EDIT) Display a form for editing a post
+  * (UPDATE) Submit edit form to replace the old post info in the DB with new info
+  * (DELETE) Remove a post from the DB
 
 ## This app was built with
 
